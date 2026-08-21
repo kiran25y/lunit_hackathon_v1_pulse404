@@ -1,0 +1,2 @@
+{"tools":[{"name":"REPLACE_official_tool_name","description":"Replace with official on-site description","url":"https://REPLACE-MCP-ENDPOINT","headers":{"Authorization":"Bearer REPLACE_OR_INJECT_SECURELY"},"parameters":{"type":"object","properties":{"query":{"type":"string"}},"required":["query"]}}]}
+
