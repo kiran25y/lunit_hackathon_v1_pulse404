@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+results/
+.env
+mcp_tools_all.json
+mcp_tools_selected.json
+mcp_schemas_compact.json
