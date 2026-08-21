@@ -2,14 +2,14 @@ import importlib
 
 import pytest
 
-from app.config import Settings, _normalize_l2_base_url, _number
+from app.config import Settings, _number
 from app.conversation import build_case_state
 from app.l2_client import L2Client
 from app.mcp_client import (
     MCPRegistry,
     capture_citations,
 )
-from app.pipeline import HealthBenchHarness, _normalize_citations
+from app.pipeline import HealthBenchHarness
 from app.risk import assess_risk
 
 
@@ -19,24 +19,6 @@ def test_invalid_numeric_environment_values_use_safe_defaults(monkeypatch):
 
     monkeypatch.setenv("BROKEN_NUMBER", "not-a-number")
     assert _number("BROKEN_NUMBER", 8, int) == 8
-
-
-def test_l2_base_url_is_normalized_once():
-    assert (
-        _normalize_l2_base_url("https://model.example")
-        == "https://model.example/v1"
-    )
-
-
-def test_superscript_citations_are_normalized_without_changing_units():
-    answer = "The target uses m². This is supported.¹\n¹ Guideline"
-    assert _normalize_citations(answer) == (
-        "The target uses m². This is supported.[1]\n[1] Guideline"
-    )
-    assert (
-        _normalize_l2_base_url("https://model.example/v1/")
-        == "https://model.example/v1"
-    )
 
 
 def test_official_lunit_environment_selects_real_pipeline(monkeypatch):

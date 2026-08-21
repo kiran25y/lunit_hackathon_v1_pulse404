@@ -1,5 +1,4 @@
 import json, uuid
-import certifi
 import httpx
 from .schemas import ModelTurn, ToolCall
 
@@ -14,10 +13,7 @@ class L2Client:
         if self.s.l2_api_key: headers["Authorization"] = f"Bearer {self.s.l2_api_key}"
         payload = {"model": self.s.l2_model, "messages": messages, "temperature": 0}
         if tools: payload.update(tools=tools, tool_choice="auto")
-        async with httpx.AsyncClient(
-            timeout=self.s.timeout,
-            verify=certifi.where(),
-        ) as client:
+        async with httpx.AsyncClient(timeout=self.s.timeout) as client:
             r = await client.post(f"{self.s.l2_base_url.rstrip('/')}/chat/completions", headers=headers, json=payload)
             r.raise_for_status(); msg = r.json()["choices"][0]["message"]
         calls = []
@@ -34,3 +30,4 @@ class L2Client:
         if "retrieve_relevant_content" in names and not any(m.get("role") == "tool" for m in messages):
             return ModelTurn(tool_calls=[ToolCall(id="mock-retrieve", name="retrieve_relevant_content", arguments={"query":"self-contained mock medical query"})])
         return ModelTurn(content="Mock L2 response. Configure the on-site Lunit endpoint for medical answers.")
+
