@@ -20,6 +20,17 @@ def _first_env(*names: str, default: str = "") -> str:
     return default
 
 
+def _normalize_l2_base_url(value: str) -> str:
+    """Return the OpenAI-compatible API root exactly once."""
+
+    base_url = value.strip().rstrip("/")
+
+    if base_url.endswith("/v1"):
+        return base_url
+
+    return f"{base_url}/v1"
+
+
 def _number(
     names: str | tuple[str, ...],
     default: int | float,
@@ -62,22 +73,19 @@ def _bool(
 @dataclass(frozen=True)
 class Settings:
     # Lunit FM L2
-    l2_base_url: str = _first_env(
-        "L2_BASE_URL",
-        "LUNIT_FM_API_URL",
+    l2_base_url: str = _normalize_l2_base_url(
+        _first_env(
+            "L2_BASE_URL",
+            "LUNIT_FM_API_URL",
+            default="https://model.hackathon.lunit.io",
+        )
     )
 
-    # The official environment uses LUNIT_L2_MODE. If a real endpoint is
-    # supplied without an explicit mode, selecting it is safer than silently
-    # returning the development mock response for every benchmark sample.
+    # Mock mode must be explicitly requested; a silent mock scores zero.
     l2_mode: str = _first_env(
         "L2_MODE",
         "LUNIT_L2_MODE",
-        default=(
-            "openai_compatible"
-            if l2_base_url
-            else "mock"
-        ),
+        default="openai_compatible",
     )
 
     l2_api_key: str = _first_env(

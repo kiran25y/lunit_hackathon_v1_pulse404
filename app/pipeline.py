@@ -19,6 +19,26 @@ from .schemas import (
 )
 
 
+_SUPERSCRIPT_DIGITS = str.maketrans(
+    "⁰¹²³⁴⁵⁶⁷⁸⁹",
+    "0123456789",
+)
+
+
+def _normalize_citations(answer: str) -> str:
+    """Convert standalone superscript references without touching units."""
+
+    def replace(match):
+        number = match.group(1).translate(_SUPERSCRIPT_DIGITS)
+        return f"[{number}]"
+
+    return re.sub(
+        r"(?<![A-Za-z0-9])([⁰¹²³⁴⁵⁶⁷⁸⁹]+)(?=\s|[.,;:)\]]|$)",
+        replace,
+        answer,
+    )
+
+
 def _assistant(turn):
     """Convert the internal model response into a chat message."""
 
@@ -552,7 +572,9 @@ class HealthBenchHarness:
                 [],
             )
 
-        answer = final_turn.content.strip()
+        answer = _normalize_citations(
+            final_turn.content.strip()
+        )
 
         issues = self._verify(
             answer,
@@ -596,7 +618,9 @@ class HealthBenchHarness:
             revised_answer = revised_turn.content.strip()
 
             if revised_answer:
-                answer = revised_answer
+                answer = _normalize_citations(
+                    revised_answer
+                )
 
             # Report issues for the revised final answer, not the draft.
             issues = self._verify(
