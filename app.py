@@ -9,8 +9,6 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List, Optional
 
-from mcp import ClientSession
-from mcp.client.streamable_http import streamable_http_client
 
 
 app = FastAPI()
@@ -20,7 +18,7 @@ app = FastAPI()
 # CONFIG
 # ============================================================
 
-API_KEY = os.environ["LUNIT_FM_API_KEY"]
+API_KEY = os.environ.get("LUNIT_FM_API_KEY", "")
 
 MODEL_URL = os.environ.get(
     "LUNIT_FM_API_URL",
@@ -154,6 +152,16 @@ Be concise but useful.
 # ============================================================
 
 def call_lunit(messages, temperature=0.2):
+    api_key = os.environ.get("LUNIT_FM_API_KEY", API_KEY)
+
+    if not api_key:
+        raise RuntimeError("LUNIT_FM_API_KEY is not available")
+
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json",
+    }
+
     payload = {
         "model": MODEL_NAME,
         "messages": messages,
@@ -163,7 +171,7 @@ def call_lunit(messages, temperature=0.2):
     for attempt in range(3):
         response = requests.post(
             f"{MODEL_URL}/v1/chat/completions",
-            headers=HEADERS,
+            headers=headers,
             json=payload,
             timeout=120,
         )
@@ -422,6 +430,9 @@ def choose_route(messages):
 # ============================================================
 
 async def call_mcp_tool(tool_name, arguments):
+    from mcp import ClientSession
+    from mcp.client.streamable_http import streamable_http_client
+
     headers = {
         "Authorization": f"Bearer {API_KEY}",
     }
