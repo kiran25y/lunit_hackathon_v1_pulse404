@@ -1,0 +1,127 @@
+{
+ "results": [
+  {
+   "node_id": "anttd",
+   "title": "EAU - EANM - ESTRO - ESUR - ISUP - SIOG Guidelines on Prostate Cancer",
+   "summary": "This document presents evidence-based guidelines for the comprehensive management of prostate cancer, developed by an international multidisciplinary panel. It covers epidemiology, risk factors, and classification systems to facilitate accurate diagnosis and risk stratification using advanced imaging and biomarkers. Treatment protocols are detailed for various disease stages, ranging from active surveillance for low-risk cases to systemic therapies for metastatic and castration-resistant disease. The guidelines also emphasize follow-up procedures, quality of life outcomes, and the mitigation of long-term treatment side effects through multidisciplinary support.",
+   "total_pages": 267
+  },
+  {
+   "node_id": "asmdb",
+   "title": "NCCN Guidelines for Patients: Bladder Cancer",
+   "summary": "This resource provides evidence-based guidance for patients and caregivers navigating bladder cancer diagnosis, staging, and treatment. It details diagnostic procedures, risk stratification, and personalized therapeutic strategies ranging from localized interventions to systemic therapies for advanced disease. Comprehensive support services are outlined to address physical symptoms, psychological challenges, and logistical needs throughout the care continuum. The document concludes with a glossary of medical terms and a directory of affiliated cancer centers to facilitate access to specialized care.",
+   "total_pages": 89
+  },
+  {
+   "node_id": "aulaz",
+   "title": "2023 AHA/ACC/ACCP/ASPC/NLA/PCNA Guideline for the Management of Patients With Chronic Coronary Disease",
+   "summary": "Clinical management of chronic coronary disease prioritizes a patient-centered approach integrating social determinants of health, shared decision-making, and comprehensive risk stratification. Treatment strategies emphasize individualized pharmacological therapies, lifestyle modifications, and cardiac rehabilitation to balance ischemic benefits against bleeding risks. The guidelines provide standardized frameworks for diagnostic evaluation, revascularization decisions, and care in special populations to optimize long-term outcomes. Transparency regarding reviewer conflicts of interest and financial relationships is maintained throughout the document to ensure credibility.",
+   "total_pages": 111
+  },
+  {
+   "node_id": "autpz",
+   "title": "WHO GUIDELINES ON PHYSICAL ACTIVITY AND SEDENTARY BEHAVIOUR",
+   "summary": "The document establishes evidence-based public health guidelines for physical activity and sedentary behavior across diverse populations, including children, adults, older adults, and individuals with specific health conditions. It emphasizes the benefits of regular aerobic and muscle-strengthening exercises while advocating for the reduction of sedentary time to mitigate health risks. The recommendations are derived from systematic reviews and structured decision-making processes that balance evidence strength with equity and feasibility. Finally, the text outlines frameworks for the adoption, dissemination, and implementation of these guidelines through multisectoral collaboration and ongoing evaluation.",
+   "total_pages": 104
+  },
+  {
+   "node_id": "avwge",
+   "title": "2025 ACC/AHA/ACEP/NAEMSP/SCAI Guideline for the Management of Patients With Acute Coronary Syndromes: A Report of the American College of Cardiology/American Heart Association Joint Committee on Clinical Practice Guidelines",
+   "summary": "The guidelines establish comprehensive clinical standards for acute coronary syndromes, emphasizing rapid risk stratification, primary percutaneous coronary intervention, and complete revascularization. They integrate specific medical therapies, including colchicine and influenza vaccination, to stabilize plaques and reduce recurrent cardiovascular events. The document outlines protocols for managing complex scenarios such as cardiogenic shock and mechanical complications while detailing long-term secondary prevention strategies. Extensive transparency measures and financial disclosure tables accompany these recommendations to ensure accountability among all guideline contributors.",
+   "total_pages": 92
+  },
+  {
+   "node_id": "bbfij",
+   "title": "2020 ACC/AHA Guideline for the Management of Patients With Valvular Heart Disease",
+   "summary": "The document presents clinical practice guidelines for managing valvular heart disease, emphasizing multidisciplinary evaluation and evidence-based treatment strategies. It provides comprehensive recommendations for diagnosis, staging, and intervention across various conditions, including aortic and mitral valve diseases, prosthetic valves, and infective endocarditis. The text details specific therapeutic approaches for complex scenarios such as mixed valve disease and special populations, prioritizing symptom relief and prevention of ventricular dysfunction. Rigorous transparency protocols and conflict of interest disclosures accompany the clinical content to ensure the integrity of the recommendations.",
+   "total_pages": 156
+  },
+  {
+   "node_id": "bkkcg",
+   "title": "Canadian Urological Association guideline on the management of non-muscle invasive bladder cancer",
+   "summary": "Clinical guidelines address the management of non-muscle invasive bladder cancer, emphasizing risk stratification based on tumor stage, grade, and histological features to guide therapeutic decisions. Diagnostic evaluation prioritizes cystoscopy and imaging, while treatment strategies range from transurethral resection and intravesical therapies to radical cystectomy for high-risk or BCG-unresponsive cases. The document outlines specific protocols for surveillance and follow-up, tailored to individual patient risk profiles to monitor for recurrence and progression. Additionally, it identifies tobacco use as the primary risk factor and details the methodology for establishing evidence-based recommendations.",
+   "total_pages": 80
+  },
+  {
+   "node_id": "bpatd",
+   "title": "Korean Society of Heart Failure Guidelines for the Management of Heart Failure: Advanced and Acute Heart Failure",
+   "summary": "The guidelines address the diagnosis and management of acute and advanced heart failure, emphasizing evidence-based recommendations for specialized interventions. Clinical assessment prioritizes symptom burden and prognosis to determine the urgency of care, distinguishing between persistent severe symptoms and rapid onset conditions. Management strategies focus on risk stratification, hemodynamic optimization, and appropriate use of mechanical circulatory support or transplantation for eligible patients. Successful outcomes rely on effective decongestion, optimization of medical therapy, and comprehensive discharge planning to reduce mortality and ensure stability.",
+   "total_pages": 16
+  },
+  {
+   "node_id": "bwahj",
+   "title": "TREATMENT OF NON-METASTATIC MUSCLE-INVASIVE BLADDER CANCER: AUA/ASCO/SUO GUIDELINE",
+   "summary": "The guidelines establish a risk-stratified framework for non-metastatic muscle-invasive bladder cancer, prioritizing multidisciplinary collaboration and comprehensive staging. Standard management typically involves cisplatin-based neoadjuvant chemotherapy followed by radical cystectomy, while bladder-preserving strategies are reserved for select patients. Future research focuses on refining protocols for variant histologies, enhancing diagnostic capabilities through advanced imaging and biomarkers, and evaluating the long-term efficacy of surgical approaches. Administrative details outline the expert panel composition, conflict of interest disclosures, and provide a bibliography of relevant academic references.",
+   "total_pages": 54
+  },
+  {
+   "node_id": "cdplh",
+   "title": "DIAGNOSIS AND TREATMENT OF NON-MUSCLE INVASIVE BLADDER CANCER: AUA/SUO GUIDELINE",
+   "summary": "The guidelines establish a risk-stratified framework for diagnosing and managing non-muscle invasive bladder cancer, emphasizing accurate staging through cystoscopy and transurethral resection. Treatment strategies are tailored to recurrence and progression risks, utilizing intravesical therapies such as chemotherapy and BCG, with specific protocols for induction, maintenance, and salvage regimens. Radical cystectomy is reserved for high-risk cases or BCG-unresponsive disease, while enhanced imaging techniques and novel biomarkers support surveillance and detection. Long-term management involves dynamic risk assessment and personalized surveillance schedules to monitor for recurrence and progression.",
+   "total_pages": 50
+  },
+  {
+   "node_id": "cmaqp",
+   "title": "Prostate cancer: diagnosis and management",
+   "summary": "The document provides clinical guidelines for the diagnosis, staging, and management of prostate cancer in secondary care, alongside recommendations for primary care follow-up. It establishes protocols for risk stratification, diagnostic imaging, and treatment selection, emphasizing patient-centered decision-making and the management of adverse effects. The text defines key clinical terminology and outlines specific research priorities to improve surveillance protocols and diagnostic accuracy. Additionally, it addresses epidemiological context, implementation resources, and recent updates to risk models and treatment pathways.",
+   "total_pages": 60
+  },
+  {
+   "node_id": "cojpu",
+   "title": "NCCN Guidelines for Kidney Cancer",
+   "summary": "The 2026 NCCN Clinical Practice Guidelines for Kidney Cancer detail updated protocols for initial workup, primary treatment, and follow-up across various tumor stages and histologies. Key revisions include adjusted recommendations for stereotactic body radiation therapy, lymph node dissection principles, and systemic therapies for clear cell and non-clear cell variants. Management strategies prioritize nephron-sparing surgery for early-stage disease while integrating immune checkpoint inhibitors and targeted agents for advanced cases based on patient risk stratification. The document establishes evidence and consensus categories to classify recommendation strength and preference levels determined by efficacy, safety, and affordability.",
+   "total_pages": 93
+  },
+  {
+   "node_id": "cuvsx",
+   "title": "Package of interventions for rehabilitation Module 7 Malignant neoplasm",
+   "summary": "The document establishes a comprehensive rehabilitation framework for managing the physical, cognitive, and psychological impacts of malignant neoplasms. It details evidence-based interventions aimed at restoring function and quality of life, supported by multidisciplinary expertise. Clinical assessments and therapeutic strategies are defined to guide care planning and patient independence. Additionally, the text confirms the rigorous management of potential conflicts of interest among the contributing experts.",
+   "total_pages": 44
+  },
+  {
+   "node_id": "cziwy",
+   "title": "2018 ACC/AHA/HRS Guideline on the Evaluation and Management of Patients With Bradycardia and Cardiac Conduction Delay",
+   "summary": "Clinical practice guidelines provide evidence-based recommendations for evaluating and managing adults with bradycardia and cardiac conduction disorders. The document details diagnostic frameworks, including symptom correlation and electrophysiologic assessment, while outlining therapeutic strategies such as permanent pacing and device selection. It addresses specific clinical scenarios, special populations, and the integration of shared decision-making to balance clinical benefits with patient values and cost considerations. Finally, the guidelines address ethical end-of-life care, discontinuation of therapy, and identify areas requiring future research into emerging pacing technologies.",
+   "total_pages": 101
+  },
+  {
+   "node_id": "darzk",
+   "title": "Guidelines for essential trauma care",
+   "summary": "The document establishes global guidelines for essential trauma care, aiming to reduce mortality and disability in low- and middle-income countries through affordable, organization-focused interventions. It defines necessary human and physical resources across various facility levels to ensure achievable standards for treating life-threatening injuries. The framework emphasizes cost-effective strategies, such as facility verification and system planning, to improve care delivery and minimize preventable deaths. Implementation requires collaborative national adaptation, specialized training, and integration with broader emergency health systems.",
+   "total_pages": 106
+  },
+  {
+   "node_id": "dboev",
+   "title": "UPDATE – 2022 Canadian Urological Association recommendations on prostate cancer screening and early diagnosis",
+   "summary": "Guidelines for prostate cancer screening in Canada emphasize balancing early detection of significant disease with the avoidance of over-treatment through shared decision-making. Recommendations target men with a life expectancy exceeding ten years, utilizing PSA testing alongside adjunctive strategies like multiparametric MRI and biomarkers to refine risk assessment. Diagnostic pathways rely on individualized approaches rather than uniform cutoffs, incorporating risk calculators and repeated PSA measurements to determine the necessity of biopsy. The overarching goal is to maximize mortality reduction benefits while minimizing the harms associated with overdiagnosis and unnecessary procedures.",
+   "total_pages": 13
+  },
+  {
+   "node_id": "dcrdp",
+   "title": "2026 ACC/AHA/AACVPR/ABC/ACPM/ ADA/AGS/APhA/ASPC/NLA/PCNA Guideline on the Management of Dyslipidemia",
+   "summary": "The document establishes updated clinical guidelines for the evaluation, management, and monitoring of dyslipidemia, replacing previous iterations with new risk assessment tools and therapeutic recommendations. It emphasizes early treatment initiation, routine measurement of specific lipid markers, and the integration of coronary artery calcium scoring to guide therapy decisions across diverse patient populations. Comprehensive protocols address lifestyle interventions and pharmacological strategies for various conditions, including familial hypercholesterolemia, chronic kidney disease, and special populations such as children, older adults, and those planning pregnancy. The guidelines also highlight the importance of ancestry-informed risk assessment, management of comorbidities like heart failure and cancer, and strategies to improve patient adherence while addressing evidence gaps.",
+   "total_pages": 134
+  },
+  {
+   "node_id": "digqp",
+   "title": "Renal cell carcinoma: ESMO Clinical Practice Guideline for diagnosis, treatment and follow-up",
+   "summary": "Global renal cell carcinoma incidence is rising due to increased incidental detection, with risk factors including smoking, obesity, and genetic syndromes. Diagnosis integrates clinical staging, histopathology, and molecular characterization to guide personalized surgical and systemic treatment strategies. Management of local disease prioritizes nephrectomy and adjuvant immunotherapy, while advanced cases rely on immune checkpoint inhibitors and targeted therapies tailored to histological subtypes. Long-term care involves risk-adapted follow-up imaging and specific interventions for metastases, with guidelines derived from systematic methodology.",
+   "total_pages": 15
+  },
+  {
+   "node_id": "dkamn",
+   "title": "Package of interventions for rehabilitation Module 1 Introduction",
+   "summary": "The document establishes a framework for essential rehabilitation interventions tailored to low- and middle-resource settings, emphasizing feasibility, cost-effectiveness, and universal health coverage. It categorizes treatments by type and functioning domains, specifying required resources, time commitments, and the roles of qualified specialists versus non-specialists. The methodology details a rigorous selection process based on high-quality evidence and expert consensus to ensure interventions address impairments and participation restrictions effectively. Finally, it guides health system planners in integrating these services through progressive realization across various levels of care and workforce structures.",
+   "total_pages": 36
+  },
+  {
+   "node_id": "dokhs",
+   "title": "Package of interventions for rehabilitation. Module 8. Mental health conditions. Web Annex. Literature reviews and evidence tables",
+   "summary": "The document provides a web annex for the World Health Organization's rehabilitation package, specifically focusing on schizophrenia. It details the systematic methodology for identifying and selecting clinical practice guidelines and Cochrane systematic reviews through rigorous database searches and quality appraisals. The content includes evidence tables that summarize intervention effectiveness, quality of evidence frameworks, and specific recommendations for psychosocial and physical health support. Statistical data and references are presented to substantiate the selected interventions for schizophrenia rehabilitation.",
+   "total_pages": 26
+  }
+ ],
+ "total_results": 120,
+ "offset": 0,
+ "message": "Showing 1-20 of 120 documents. Pass offset=20 for the next page."
+}
