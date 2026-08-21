@@ -8,9 +8,6 @@ from typing import Any
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 
-from .main import harness as build_harness
-
-
 logging.basicConfig(
     level=logging.INFO,
     format=(
@@ -62,8 +59,22 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# Reuse the registry so discovered MCP schemas can be cached.
-healthbench_harness = build_harness()
+# Build the medical stack only when the first completion arrives. CoEval
+# probes the API process before sending work; importing MCP/network adapters
+# during Uvicorn startup makes an optional integration failure kill the whole
+# container before the probe can connect.
+healthbench_harness = None
+
+
+def get_healthbench_harness():
+    global healthbench_harness
+
+    if healthbench_harness is None:
+        from .main import harness as build_harness
+
+        healthbench_harness = build_harness()
+
+    return healthbench_harness
 
 
 @app.get("/")
@@ -150,7 +161,7 @@ async def chat_completions(
 
     try:
         result = (
-            await healthbench_harness.answer(
+            await get_healthbench_harness().answer(
                 messages
             )
         )

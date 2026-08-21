@@ -1,4 +1,6 @@
 from fastapi.testclient import TestClient
+import subprocess
+import sys
 
 from app.server import (
     DRIVER_MODEL_NAME,
@@ -7,6 +9,25 @@ from app.server import (
 
 
 client = TestClient(app)
+
+
+def test_server_import_does_not_load_mcp_stack():
+    completed = subprocess.run(
+        [
+            sys.executable,
+            "-c",
+            (
+                "import sys; import app.server; "
+                "assert 'mcp' not in sys.modules; "
+                "assert 'app.mcp_client' not in sys.modules"
+            ),
+        ],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+    assert completed.returncode == 0, completed.stderr
 
 
 def test_health():
