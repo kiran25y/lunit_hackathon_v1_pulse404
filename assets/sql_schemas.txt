@@ -1,0 +1,3 @@
+{
+ "result": "# Vector Database Collections\n- pubmed_abstracts: PubMed/PMC abstracts, use to find information about a specific disease or drug\n- hira_faq: 건강보험심사평가원(HIRA) 자주 묻는 질문 검색 (hybrid search)\n\n# SQL Databases\n- faers_12q4_25q4: FDA Adverse Event Reporting System (FAERS) database, use to query drug-adverse event associations, patient demographics, and clinical outcomes from ~10M individual cases spanning 2012Q4 onward.\n- dailymed_26_08: FDA DailyMed drug database, use to find information about a known drug\n- kcd: Korean Standard Classification of Diseases (KCD), multi-revision (KCD-8 / KCD-9 / ...). Use to validate disease codes, look up the official Korean/English name(s) of a code, or find candidate codes for a disease name, in a chosen revision."
+}

@@ -1,0 +1,127 @@
+{
+ "results": [
+  {
+   "node_id": "agiau",
+   "title": "2017 요양급여 적정성 평가결과 종합보고서",
+   "summary": "The document outlines a comprehensive methodology for calculating healthcare quality indicators through risk-adjusted mortality models and weighted structural, process, and outcome metrics. It details an evaluation framework that leverages health insurance data to assess medical appropriateness, support value-based reimbursement, and guide national health policies. Performance results across various disease categories are analyzed to identify clinical variations and drive improvements in resource utilization and patient safety. Finally, the system employs public disclosure, financial incentives, and educational support to enhance care standards and empower patient choice.",
+   "total_pages": 230
+  },
+  {
+   "node_id": "aipap",
+   "title": "의약품 경제성 평가 지침",
+   "summary": "The guidelines establish a comprehensive framework for assessing the economic value of pharmaceuticals to support health insurance coverage decisions, emphasizing a healthcare system perspective and cost-utility analysis. They mandate rigorous methodological standards for selecting comparators, defining target populations, and calculating incremental cost-effectiveness ratios while requiring transparent reporting and reproducibility. The document provides detailed instructions for conducting sensitivity analyses, managing uncertainty, and integrating expert opinions or international data into local contexts. Finally, it outlines specific requirements for structuring submission materials, including definitions of key terms and reporting standards for clinical and economic outcomes.",
+   "total_pages": 104
+  },
+  {
+   "node_id": "anvjz",
+   "title": "2002년도 요양급여비용 교정업무지침서",
+   "summary": "The document establishes administrative procedures and error codes for healthcare cost claims within the Korean national health insurance system, detailing the transition to electronic data interchange. It outlines operational workflows for correcting claim statements, including user authentication, batch processing, and discrepancy resolution through secure dashboard management. Comprehensive verification standards ensure data consistency by cross-referencing institutional codes, financial amounts, and diagnostic details against master tables. Additionally, the text defines fee structures for medical consultations and aid, specifying eligibility criteria, co-payment calculations, and classification codes for institutions and treatments.",
+   "total_pages": 99
+  },
+  {
+   "node_id": "aodbd",
+   "title": "2001년도 민원상담사례집",
+   "summary": "The document provides a comprehensive framework for managing medical insurance consultations, claims assessment, and administrative procedures under the National Health Insurance system. It establishes detailed guidelines for processing inquiries, handling billing disputes, and ensuring compliance with regulatory standards across various healthcare facilities and service types. Specific protocols are defined for vulnerable populations, including medical aid recipients, alongside technical instructions for electronic claim submissions and cost calculation methodologies. Furthermore, the text outlines fee structures, co-payment requirements, and contact information for relevant government agencies and medical institutions to facilitate transparent and efficient healthcare service delivery.",
+   "total_pages": 167
+  },
+  {
+   "node_id": "apoez",
+   "title": "요양급여의 대상여부의 확인 등 업무 편람",
+   "summary": "This manual establishes internal operational procedures for verifying eligibility for medical care benefits, serving as a guide for staff workflow rather than an external legal reference. It outlines standards for application reception, distribution, and specific processing requirements to ensure swift and accurate determinations of benefit coverage. The document details protocols for handling refund non-payment scenarios, distinguishing between cases with and without objections from medical institutions. Additionally, it specifies requirements for record management, statistical reporting, and the administrative handling of overpayments and claim deductions.",
+   "total_pages": 55
+  },
+  {
+   "node_id": "appeg",
+   "title": "평가지표 상세설명서 모음집",
+   "summary": "The document provides a comprehensive framework for medical quality evaluation indicators derived from the 2020 medical care adequacy assessment. It details the definitions, calculation methods, and classification systems for metrics covering oncology, acute and chronic conditions, infectious diseases, mental health, and pharmaceuticals. The content further addresses institutional performance, patient-centered care, and specific structural, process, and outcome standards for various healthcare settings. Supporting materials include reference indexes and lifecycle histories to facilitate the understanding and utilization of these quality metrics.",
+   "total_pages": 520
+  },
+  {
+   "node_id": "aveub",
+   "title": "요양병원형 건강보험수가 시범사업지침(안)",
+   "summary": "The document outlines an errata sheet and detailed guidelines for a pilot project implementing per-diem lump-sum payments for nursing hospitals. This system categorizes patients into disease groups based on clinical and functional characteristics to replace traditional fee-for-service models. Operational standards define eligibility, reimbursement structures, and electronic submission protocols while establishing monitoring mechanisms for quality assurance. Supplementary materials provide classification frameworks, diagnostic criteria, and terminology to ensure accurate billing and compliance.",
+   "total_pages": 91
+  },
+  {
+   "node_id": "avrra",
+   "title": "A Study on the Standardization of Medical Record Format and Contents",
+   "summary": "The study addresses the lack of uniform standards in medical record formats to improve quality and facilitate data exchange. It analyzes documentation practices across various healthcare institutions to identify essential forms and mandatory entry items. Guidelines for completion criteria, binding orders, and formatting are established to ensure consistency and legal protection. The research proposes standardized protocols for both handwritten and electronic records to enhance overall healthcare evaluation.",
+   "total_pages": 379
+  },
+  {
+   "node_id": "awcoc",
+   "title": "給與適正性 綜合管理制 效果分析",
+   "summary": "The document establishes a 'claim cost improvement rate' to quantify the preventive cost-saving effects of the Comprehensive Management System for Appropriateness of Benefits. This metric compares actual claim costs against predicted costs derived from non-intervention groups, addressing the limitations of existing post-treatment review indicators. Analysis of data from the second half of 2003 demonstrates that proactive interventions significantly reduced medical expenditures, with improvement amounts reaching a substantial portion of review adjustments. The study concludes that combining this improvement rate with review adjustments provides a comprehensive measure of total expenditure standardization and system efficacy.",
+   "total_pages": 146
+  },
+  {
+   "node_id": "awxhh",
+   "title": "2025년 6월판",
+   "summary": "The document defines the organizational structure, operational workflows, and billing standards for the Automobile Insurance Medical Service Review Center. It establishes regulatory frameworks for claim processing, including objection procedures, digital payment guarantees, and specific guidelines for traditional therapies and herbal medicine. Inspection standards and pre-inspection services are detailed to ensure billing accuracy and prevent common errors related to code classification and equipment reporting. These measures aim to standardize administrative practices and enhance compliance with regulatory requirements for personnel, materials, and claim submissions.",
+   "total_pages": 146
+  },
+  {
+   "node_id": "bflah",
+   "title": "KOPG-KM 분류집",
+   "summary": "The document outlines the evolution and classification methodology of the Korean Outpatient Group-Korean Medicine system, detailing how patients are categorized into disease groups based on diagnostic codes and treatment combinations. It establishes a framework for grouping patients by primary diagnoses and defines sixteen major disease categories that link medical conditions to standardized treatment protocols. Medical procedures are further organized into combination groups based on the types and number of acupuncture, cupping, and manual therapies applied. An index provides a reference for classifying services by body systems and specific therapeutic pairings to ensure consistent clinical documentation.",
+   "total_pages": 356
+  },
+  {
+   "node_id": "blfrs",
+   "title": "통계로 본 건강보험 30년",
+   "summary": "The publication commemorates the thirtieth anniversary of the Korean National Health Insurance system, documenting its evolution from voluntary enterprise coverage to mandatory universal access. It analyzes the program's historical trajectory, highlighting rapid expansion in healthcare infrastructure, financial stability, and significant improvements in public health metrics such as life expectancy. The content details the administrative consolidation into a unified corporation and evaluates demographic shifts, dependency ratios, and the transition from deficits to sustainable funding. Furthermore, it examines trends in medical resource utilization, disease prevalence, and the implementation of electronic review systems to enhance efficiency and compliance.",
+   "total_pages": 148
+  },
+  {
+   "node_id": "bpvqo",
+   "title": "HIRA CDM 데이터베이스의 이해 OMOP Common Data Model Specifications",
+   "summary": "The document establishes the OMOP Common Data Model as an open-source standard for organizing and analyzing observational health data through a structured, person-centric relational framework. It defines core terminology tables and metadata structures to ensure consistent classification, mapping, and interoperability of medical concepts across diverse source systems. Standardized clinical, health system, and economic data tables are specified to capture patient demographics, diagnoses, procedures, and financial details while maintaining data integrity and privacy. Derived elements and relationship mappings further transform raw data into coherent timelines to support reproducible scientific research and robust evidence generation.",
+   "total_pages": 160
+  },
+  {
+   "node_id": "bywog",
+   "title": "포괄수가제 요양급여비용 및 청구방법",
+   "summary": "The document defines clinical criteria for documenting preoperative checks, in-hospital incidents, infections, and postoperative complications across various surgical procedures. It establishes the regulatory framework for disease group-based global budgeting, including relative value point systems, payment structures, and exclusions for non-covered services. Detailed guidelines are provided for submitting electronic claims, specifying data formats, coding standards, and billing procedures for accurate cost calculation. Finally, the text outlines monitoring mechanisms for cost verification, legal provisions for benefit applications, and quality improvement checklists for patient care records.",
+   "total_pages": 322
+  },
+  {
+   "node_id": "caczr",
+   "title": "MRI 급여전환에 대비한 관리방안 연구",
+   "summary": "The document establishes a cost-based pricing framework for Magnetic Resonance Imaging to facilitate its integration into national health insurance coverage. It analyzes domestic equipment status, operational costs, and international reimbursement standards to propose efficient fee structures and equitable distribution guidelines. The study addresses systemic challenges such as unbalanced resource allocation and aging infrastructure by recommending lifecycle controls, differentiated fee schedules, and stricter eligibility criteria. These measures aim to balance clinical necessity with financial viability, ensuring sustainable expansion of coverage for severe conditions while improving regulatory oversight and quality control.",
+   "total_pages": 395
+  },
+  {
+   "node_id": "cdhwp",
+   "title": "사례로 보는 요양급여 적정성 평가 QI (Quality Improvement) 활동",
+   "summary": "The document addresses the increasing emphasis on healthcare quality and patient safety by compiling successful quality improvement case studies from the past decade. It highlights the use of structural, process, and outcome metrics to drive enhancements in patient care standards and safety across various medical specialties. Key strategies include implementing standardized clinical protocols, upgrading electronic medical record systems, and fostering multidisciplinary team coordination to address performance gaps. These initiatives have led to improved procedural compliance, reduced unnecessary treatments, and higher patient satisfaction through continuous monitoring and staff education.",
+   "total_pages": 328
+  },
+  {
+   "node_id": "cfnvn",
+   "title": "수치로 보는 HIRA 15년의 발전사",
+   "summary": "The document compiles statistical data to visualize the organization's fifteen-year history, covering advancements in review, evaluation, medical costs, diseases, resources, and pharmaceutical management. It details medical expense audits and appropriateness evaluations that verify claim validity and monitor clinical indicators to ensure cost-effectiveness and standardized care. Health insurance statistics analyze expenditure trends and disease patterns, highlighting financial burdens across demographics while explaining cost management mechanisms and reimbursement frameworks. Furthermore, the text examines pharmaceutical distribution safety, the expansion of medical infrastructure and personnel, and provides historical data on the organization's publications and system evolution.",
+   "total_pages": 132
+  },
+  {
+   "node_id": "cgdpa",
+   "title": "심사평가원의 업무개요",
+   "summary": "The document details the legal framework, organizational structure, and operational mandates of the national health insurance review authority. It outlines procedures for evaluating medical service costs, ensuring appropriateness, and managing long-term care benefits through rigorous assessment and inspection protocols. The text further explains the system's evolution, legal interpretations, and mechanisms for dispute resolution and regulatory compliance to maintain financial stability and healthcare quality.",
+   "total_pages": 234
+  },
+  {
+   "node_id": "cngos",
+   "title": "이심저심",
+   "summary": "The service assists users in identifying reputable local hospitals by distinguishing objective medical data from advertising content. It provides comprehensive information on medical resources, quality evaluations, and cost ranges based on national health insurance big data. Users can navigate the platform through a structured process to filter facilities by region, disease type, and performance metrics. This tool supports informed healthcare decisions by offering transparent access to verified hospital details and operational status.",
+   "total_pages": 29
+  },
+  {
+   "node_id": "cqflp",
+   "title": "요양급여의적용기준및방법에관한세부사항",
+   "summary": "This document establishes detailed standards and methods for applying medical care benefits under national health insurance regulations. It defines coverage eligibility, reimbursement rules, and administrative guidelines for various clinical scenarios, including specific conditions and billing procedures. Comprehensive fee structures are set for basic medical services, laboratory tests, imaging, and specialized treatments such as radiation therapy and anesthesia. The text also governs billing for medication dispensing, injections, and physical or psychiatric therapies, while providing contact information for the relevant health insurance corporation.",
+   "total_pages": 500
+  }
+ ],
+ "total_results": 249,
+ "offset": 0,
+ "message": "Showing 1-20 of 249 documents. Pass offset=20 for the next page."
+}

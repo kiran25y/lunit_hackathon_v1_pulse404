@@ -1,7 +1,3 @@
 fastapi
 uvicorn
-requests
 pydantic
-certifi
-mcp
-httpx
