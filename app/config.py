@@ -9,16 +9,30 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
+def _first_env(*names: str, default: str = "") -> str:
+    """Return the first non-empty value from equivalent env names."""
+
+    for name in names:
+        value = os.getenv(name)
+        if value is not None and value.strip():
+            return value.strip()
+
+    return default
+
+
 def _number(
-    name: str,
+    names: str | tuple[str, ...],
     default: int | float,
     converter,
 ):
     """Read numeric settings without making server startup fragile."""
 
-    raw_value = os.getenv(name)
+    if isinstance(names, str):
+        names = (names,)
 
-    if raw_value is None or not raw_value.strip():
+    raw_value = _first_env(*names)
+
+    if not raw_value:
         return default
 
     try:
@@ -28,13 +42,16 @@ def _number(
 
 
 def _bool(
-    name: str,
+    names: str | tuple[str, ...],
     default: bool,
 ) -> bool:
-    return os.getenv(
-        name,
-        str(default),
-    ).strip().lower() in {
+    if isinstance(names, str):
+        names = (names,)
+
+    return _first_env(
+        *names,
+        default=str(default),
+    ).lower() in {
         "1",
         "true",
         "yes",
@@ -45,37 +62,40 @@ def _bool(
 @dataclass(frozen=True)
 class Settings:
     # Lunit FM L2
-    l2_mode: str = os.getenv(
-        "L2_MODE",
-        "mock",
-    )
-
-    l2_base_url: str = os.getenv(
+    l2_base_url: str = _first_env(
         "L2_BASE_URL",
-        os.getenv(
-            "LUNIT_FM_API_URL",
-            "",
+        "LUNIT_FM_API_URL",
+    )
+
+    # The official environment uses LUNIT_L2_MODE. If a real endpoint is
+    # supplied without an explicit mode, selecting it is safer than silently
+    # returning the development mock response for every benchmark sample.
+    l2_mode: str = _first_env(
+        "L2_MODE",
+        "LUNIT_L2_MODE",
+        default=(
+            "openai_compatible"
+            if l2_base_url
+            else "mock"
         ),
     )
 
-    l2_api_key: str = os.getenv(
+    l2_api_key: str = _first_env(
+        "L2_API_KEY",
         "LUNIT_FM_API_KEY",
-        os.getenv(
-            "L2_API_KEY",
-            "",
-        ),
     )
 
-    l2_model: str = os.getenv(
+    l2_model: str = _first_env(
         "L2_MODEL",
-        os.getenv(
-            "LUNIT_FM_MODEL",
-            "Lunit/L2-preview",
-        ),
+        "LUNIT_FM_MODEL",
+        default="Lunit/L2-preview",
     )
 
     l2_timeout: float = _number(
-        "L2_TIMEOUT_SECONDS",
+        (
+            "L2_TIMEOUT_SECONDS",
+            "LUNIT_L2_TIMEOUT",
+        ),
         300.0,
         float,
     )
@@ -86,28 +106,31 @@ class Settings:
         return self.l2_timeout
 
     # Lunit MCP server
-    mcp_url: str = os.getenv(
+    mcp_url: str = _first_env(
         "LUNIT_MCP_URL",
-        "https://mcp.hackathon.lunit.io/mcp",
+        default="https://mcp.hackathon.lunit.io/mcp",
     )
 
-    mcp_api_key: str = os.getenv(
+    mcp_api_key: str = _first_env(
         "LUNIT_FM_API_KEY",
-        os.getenv(
-            "L2_API_KEY",
-            "",
-        ),
+        "L2_API_KEY",
     )
 
     mcp_timeout: float = _number(
-        "LUNIT_MCP_TIMEOUT_SECONDS",
+        (
+            "LUNIT_MCP_TIMEOUT_SECONDS",
+            "LUNIT_MCP_TIMEOUT",
+        ),
         60.0,
         float,
     )
 
     # Harness configuration
     retrieval_max_calls: int = _number(
-        "RETRIEVAL_MAX_CALLS",
+        (
+            "RETRIEVAL_MAX_CALLS",
+            "LUNIT_RETRIEVAL_MAX_CALLS",
+        ),
         8,
         int,
     )
@@ -119,12 +142,18 @@ class Settings:
     )
 
     enable_retrieval: bool = _bool(
-        "ENABLE_RETRIEVAL",
+        (
+            "ENABLE_RETRIEVAL",
+            "LUNIT_ENABLE_RETRIEVAL",
+        ),
         True,
     )
 
     enable_revision: bool = _bool(
-        "ENABLE_REVISION",
+        (
+            "ENABLE_REVISION",
+            "LUNIT_ENABLE_REVISION",
+        ),
         True,
     )
 

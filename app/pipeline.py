@@ -698,6 +698,16 @@ class HealthBenchHarness:
                 "Possible FAERS causality or incidence overclaim."
             )
 
+        if re.search(
+            r"\b(retrieval tools?|evidence service|available tools?|"
+            r"internal (?:pipeline|processing)|system prompt)\b",
+            answer,
+            re.IGNORECASE,
+        ):
+            issues.append(
+                "The answer exposed internal retrieval or processing details."
+            )
+
         return issues
 
     def save_trace(self, request_id, result):

@@ -1,3 +1,5 @@
+import importlib
+
 import pytest
 
 from app.config import Settings, _number
@@ -17,6 +19,28 @@ def test_invalid_numeric_environment_values_use_safe_defaults(monkeypatch):
 
     monkeypatch.setenv("BROKEN_NUMBER", "not-a-number")
     assert _number("BROKEN_NUMBER", 8, int) == 8
+
+
+def test_official_lunit_environment_selects_real_pipeline(monkeypatch):
+    monkeypatch.delenv("L2_MODE", raising=False)
+    monkeypatch.delenv("L2_BASE_URL", raising=False)
+    monkeypatch.delenv("ENABLE_RETRIEVAL", raising=False)
+    monkeypatch.setenv("LUNIT_FM_API_URL", "https://model.example/v1")
+    monkeypatch.setenv("LUNIT_L2_MODE", "openai_compatible")
+    monkeypatch.setenv("LUNIT_ENABLE_RETRIEVAL", "true")
+    monkeypatch.setenv("LUNIT_L2_TIMEOUT", "123")
+
+    import app.config as config_module
+
+    reloaded = importlib.reload(config_module)
+    settings = reloaded.Settings()
+
+    assert settings.l2_mode == "openai_compatible"
+    assert settings.l2_base_url == "https://model.example/v1"
+    assert settings.enable_retrieval is True
+    assert settings.l2_timeout == 123.0
+
+    importlib.reload(config_module)
 
 
 def test_multiturn_state():
