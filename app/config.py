@@ -9,24 +9,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def _number(
-    name: str,
-    default: int | float,
-    converter,
-):
-    """Read numeric settings without making server startup fragile."""
-
-    raw_value = os.getenv(name)
-
-    if raw_value is None or not raw_value.strip():
-        return default
-
-    try:
-        return converter(raw_value)
-    except (TypeError, ValueError):
-        return default
-
-
 def _bool(
     name: str,
     default: bool,
@@ -74,10 +56,11 @@ class Settings:
         ),
     )
 
-    l2_timeout: float = _number(
-        "L2_TIMEOUT_SECONDS",
-        300.0,
-        float,
+    l2_timeout: float = float(
+        os.getenv(
+            "L2_TIMEOUT_SECONDS",
+            "300",
+        )
     )
 
     # Backwards-compatible alias used by l2_client.py.
@@ -99,23 +82,26 @@ class Settings:
         ),
     )
 
-    mcp_timeout: float = _number(
-        "LUNIT_MCP_TIMEOUT_SECONDS",
-        60.0,
-        float,
+    mcp_timeout: float = float(
+        os.getenv(
+            "LUNIT_MCP_TIMEOUT_SECONDS",
+            "60",
+        )
     )
 
     # Harness configuration
-    retrieval_max_calls: int = _number(
-        "RETRIEVAL_MAX_CALLS",
-        8,
-        int,
+    retrieval_max_calls: int = int(
+        os.getenv(
+            "RETRIEVAL_MAX_CALLS",
+            "8",
+        )
     )
 
-    max_selected_citations: int = _number(
-        "MAX_SELECTED_CITATIONS",
-        6,
-        int,
+    max_selected_citations: int = int(
+        os.getenv(
+            "MAX_SELECTED_CITATIONS",
+            "6",
+        )
     )
 
     enable_retrieval: bool = _bool(
