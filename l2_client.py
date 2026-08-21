@@ -30,11 +30,25 @@ import json
 import logging
 import os
 import re
+import threading
 import time
 import urllib.error
 import urllib.request
 
 log = logging.getLogger("l2.client")
+
+# CoEval evaluates requests concurrently. Each synchronous FastAPI request
+# remains on one worker thread, so a thread-local deadline isolates budgets.
+_tls = threading.local()
+
+
+def set_deadline(seconds_from_now: float) -> None:
+    _tls.deadline = time.monotonic() + seconds_from_now
+
+
+def _remaining() -> float:
+    deadline = getattr(_tls, "deadline", None)
+    return float("inf") if deadline is None else deadline - time.monotonic()
 
 BASE = os.environ.get("L2_BASE_URL", "").rstrip("/")
 KEY = os.environ.get("L2_API_KEY", "")
@@ -42,7 +56,7 @@ MODEL = os.environ.get("L2_MODEL", "l2")
 CHAT_PATH = os.environ.get("L2_CHAT_PATH", "/v1/chat/completions")
 AUTH_HEADER = os.environ.get("L2_AUTH_HEADER", "Authorization")
 AUTH_PREFIX = os.environ.get("L2_AUTH_PREFIX", "Bearer ")
-HTTP_TIMEOUT = int(os.environ.get("L2_TIMEOUT", "90"))
+HTTP_TIMEOUT = int(os.environ.get("L2_TIMEOUT", "45"))
 
 
 class RealL2:
@@ -63,14 +77,23 @@ class RealL2:
             h[AUTH_HEADER] = f"{AUTH_PREFIX}{self.key}"
         return h
 
+    @staticmethod
+    def set_deadline(seconds_from_now: float) -> None:
+        set_deadline(seconds_from_now)
+
     def _post(self, payload: dict) -> dict:
+        remaining = _remaining()
+        if remaining < 3:
+            raise TimeoutError("request budget exhausted before L2 call")
+
         req = urllib.request.Request(
             self.base + CHAT_PATH,
             data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
             headers=self._headers(),
             method="POST",
         )
-        with urllib.request.urlopen(req, timeout=HTTP_TIMEOUT) as resp:
+        timeout = min(HTTP_TIMEOUT, max(3.0, remaining - 2.0))
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
             return json.loads(resp.read().decode("utf-8", "replace"))
 
     # -- api --------------------------------------------------------------
@@ -95,7 +118,7 @@ class RealL2:
 
     def call(self, **kw) -> dict:
         """Retry wrapper. Mirrors l2_harness.L2Client.call."""
-        retries = int(os.environ.get("L2_RETRIES", "2"))
+        retries = int(os.environ.get("L2_RETRIES", "1"))
         last = None
         for attempt in range(retries + 1):
             try:
@@ -108,8 +131,11 @@ class RealL2:
                     break
             except Exception as e:  # noqa: BLE001
                 last = str(e)[:300]
+            if _remaining() < 8:
+                log.error("L2 call failed and request budget is spent: %s", last)
+                break
             log.warning("L2 call failed (attempt %d): %s", attempt + 1, last)
-            time.sleep(1.5 * (attempt + 1))
+            time.sleep(1.0)
         log.error("L2 call gave up: %s", last)
         return {"content": "", "tool_calls": []}
 

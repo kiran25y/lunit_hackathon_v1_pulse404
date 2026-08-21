@@ -2,6 +2,7 @@ import os
 import time
 import uuid
 import logging
+import threading
 from typing import Any
 
 from fastapi import FastAPI
@@ -86,6 +87,24 @@ def build_real():
     from lunit_mcp import LunitMCP
 
     return RealL2(), LunitMCP()
+
+
+# Reuse discovery metadata across concurrent evaluation requests. Rebuild the
+# adapters after a pipeline-level failure so a broken MCP session is not kept.
+_infra_lock = threading.Lock()
+_infra: list = [None]
+
+
+def get_infra():
+    with _infra_lock:
+        if _infra[0] is None:
+            _infra[0] = build_real()
+        return _infra[0]
+
+
+def reset_infra():
+    with _infra_lock:
+        _infra[0] = None
 
 
 # ============================================================
@@ -179,7 +198,7 @@ def answer_safely(messages: list[dict]) -> str:
     """
 
     try:
-        client, tools = build_real()
+        client, tools = get_infra()
 
         answer = H.answer(
             client,
@@ -198,6 +217,7 @@ def answer_safely(messages: list[dict]) -> str:
         log.exception(
             "Harness failed; returning safe fallback."
         )
+        reset_infra()
 
     # Never return empty and never crash the benchmark.
     return FALLBACK_TEXT
