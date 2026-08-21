@@ -13,6 +13,6 @@ COPY . .
 
 EXPOSE 8000
 
-# CoEval normally connects on 8000; PORT keeps the image compatible with
-# runners that inject a different listening port.
-CMD ["sh", "-c", "exec python -m uvicorn app.server:app --host 0.0.0.0 --port ${PORT:-8000}"]
+# CoEval expects the OpenAI-compatible server on port 8000. Keep this in
+# exec form so runner-provided environment values cannot break startup.
+CMD ["python", "-m", "uvicorn", "app.server:app", "--host", "0.0.0.0", "--port", "8000"]
