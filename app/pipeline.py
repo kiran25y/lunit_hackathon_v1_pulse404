@@ -74,9 +74,31 @@ class HealthBenchHarness:
             },
         ]
 
-        available_tools = (
-            await self.mcp.schemas()
-        ) + [FINALIZE_TOOL]
+        try:
+            available_tools = (
+                await self.mcp.schemas()
+            ) + [FINALIZE_TOOL]
+        except Exception as exc:
+            # Retrieval is an enhancement, not a reason to make the model
+            # endpoint unavailable. This also keeps startup/smoke probes
+            # useful when evaluator credentials are absent or misconfigured.
+            retrieval_log.append(
+                {
+                    "event": "mcp_discovery_failed",
+                    "error_type": type(exc).__name__,
+                    "error": str(exc),
+                }
+            )
+
+            return (
+                CitationSelection(
+                    status="no_evidence",
+                    items=[],
+                    note="The evidence service was unavailable.",
+                ),
+                [],
+                retrieval_log,
+            )
 
         finalization_requested = False
 
