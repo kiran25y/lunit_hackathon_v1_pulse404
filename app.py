@@ -65,9 +65,17 @@ def build_real():
         os.environ["L2_BASE_URL"] = model_url.rstrip("/")
 
     if not os.environ.get("L2_API_KEY"):
-        key = os.environ.get("LUNIT_FM_API_KEY", "")
+        key = (
+            os.environ.get("LUNIT_FM_API_KEY", "")
+            or os.environ.get("OPENAI_API_KEY", "")
+        )
         if key:
             os.environ["L2_API_KEY"] = key
+
+    # Older MCP code reads only LUNIT_FM_API_KEY, while the evaluator may
+    # provide the documented L2_API_KEY. Keep both names synchronized.
+    if not os.environ.get("LUNIT_FM_API_KEY") and os.environ.get("L2_API_KEY"):
+        os.environ["LUNIT_FM_API_KEY"] = os.environ["L2_API_KEY"]
 
     if not os.environ.get("L2_MODEL"):
         os.environ["L2_MODEL"] = os.environ.get(
@@ -84,8 +92,13 @@ def build_real():
         )
 
     from l2_client import RealL2
-    from lunit_mcp import LunitMCP
+    # The default direct pipeline makes exactly one L2 call and never touches
+    # retrieval. Do not let an unused MCP handshake or MCP-specific credential
+    # name turn every otherwise-valid evaluator request into a silent fallback.
+    if os.environ.get("PIPELINE_MODE", "direct") == "direct":
+        return RealL2(), None
 
+    from lunit_mcp import LunitMCP
     return RealL2(), LunitMCP()
 
 
