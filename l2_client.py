@@ -186,9 +186,22 @@ _CALL_RE = re.compile(
     re.S,
 )
 
+_LUNIT_CALL_RE = re.compile(
+    r"<tool_call>\s*([A-Za-z0-9_]+)\s*\(\s*(\{.*?\})\s*\)"
+    r"\s*</arg_value>",
+    re.S,
+)
+
 
 def _extract_embedded_call(text: str):
     """Some models emit tool calls as JSON in the message body. Rescue it."""
+    native = _LUNIT_CALL_RE.search(text)
+    if native:
+        return {
+            "name": native.group(1),
+            "arguments": _loads(native.group(2)),
+        }
+
     m = _CALL_RE.search(text)
     if not m:
         return None

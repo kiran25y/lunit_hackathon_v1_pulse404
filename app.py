@@ -61,7 +61,7 @@ def build_real():
             "LUNIT_FM_API_URL",
             "https://model.hackathon.lunit.io",
         )
-        os.environ["L2_BASE_URL"] = model_url
+        os.environ["L2_BASE_URL"] = model_url.rstrip("/")
 
     if not os.environ.get("L2_API_KEY"):
         key = os.environ.get("LUNIT_FM_API_KEY", "")
@@ -74,10 +74,13 @@ def build_real():
             "Lunit/L2-preview",
         )
 
-    os.environ.setdefault(
-        "L2_CHAT_PATH",
-        "/v1/chat/completions",
-    )
+    if not os.environ.get("L2_CHAT_PATH"):
+        base_url = os.environ["L2_BASE_URL"].rstrip("/")
+        os.environ["L2_CHAT_PATH"] = (
+            "/chat/completions"
+            if base_url.endswith("/v1")
+            else "/v1/chat/completions"
+        )
 
     from l2_client import RealL2
     from lunit_mcp import LunitMCP

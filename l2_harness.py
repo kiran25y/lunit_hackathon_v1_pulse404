@@ -675,14 +675,38 @@ def generate(
         max_tokens=2048,
     )
 
-    for c in out.get("tool_calls") or []:
+    tool_calls = out.get("tool_calls") or []
+    retrieval_requested = False
+
+    for c in tool_calls:
         if c["name"] == "retrieve_relevant_content":
+            retrieval_requested = True
             evidence = retriever((c.get("arguments") or {}).get("query") or card.query)
             messages.append({"role": "assistant", "content": json.dumps(c)})
             messages.append({"role": "tool", "content": evidence})
             out = client.call(system=system, messages=messages,
                               temperature=0.3, max_tokens=2048)
             break
+
+    # Lunit L2 may emit a native evidence-tool call even when the only
+    # advertised wrapper is retrieve_relevant_content. Do not leak that
+    # markup to the evaluator; run the controlled retrieval stage instead.
+    if allow_tool and tool_calls and not retrieval_requested:
+        evidence = retriever(card.query)
+        messages.append({
+            "role": "assistant",
+            "content": json.dumps({
+                "name": "retrieve_relevant_content",
+                "arguments": {"query": card.query},
+            }),
+        })
+        messages.append({"role": "tool", "content": evidence})
+        out = client.call(
+            system=system,
+            messages=messages,
+            temperature=0.3,
+            max_tokens=2048,
+        )
 
     return (out.get("content") or "").strip()
 
