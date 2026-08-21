@@ -821,7 +821,9 @@ def answer(client: L2Client, tools: MCPTools, messages: list[dict]) -> str:
             system=direct_system,
             messages=conversation,
             temperature=0.0,
-            max_tokens=2048,
+            # L2's hidden reasoning consumes this same allowance. At 2048 the
+            # full 301-case run produced 14 empty completions and fallbacks.
+            max_tokens=6144,
         )
         text = (out.get("content") or "").strip()
         if text:
@@ -888,7 +890,7 @@ def _fallback(client: L2Client, query: str) -> str:
                "Lead with the direct answer. Note red flags. Do not refuse.",
         messages=[{"role": "user", "content": query}],
         temperature=0.1,
-        max_tokens=3072,
+        max_tokens=6144,
     )
     text = (out.get("content") or "").strip()
     return text or (
