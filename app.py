@@ -579,11 +579,8 @@ def retrieve_evidence(route_info):
             }
 
     except Exception as error:
-        return {
-            "source": "MCP",
-            "tool": route,
-            "error": str(error),
-        }
+        print("MCP retrieval failed:", repr(error))
+        return None
 
     return None
 
@@ -663,33 +660,53 @@ def chat_completions(request: ChatRequest):
         )
 
     try:
-        route_info = choose_route(messages)
+        try:
+            route_info = choose_route(messages)
+        except Exception as error:
+            print("Router failed:", repr(error))
+            route_info = {
+                "route": "general",
+                "query": messages[-1]["content"],
+                "drug_name": None,
+            }
 
         print("\n" + "=" * 60)
         print("ROUTE:", route_info)
         print("=" * 60)
 
-        evidence = retrieve_evidence(
-            route_info
-        )
+        try:
+            evidence = retrieve_evidence(route_info)
+        except Exception as error:
+            print("Evidence retrieval failed:", repr(error))
+            evidence = None
 
         if evidence:
             print("MCP SOURCE:", evidence.get("source"))
             print("MCP TOOL:", evidence.get("tool"))
-            if evidence.get("error"):
-                print("MCP ERROR:", evidence.get("error"))
         else:
             print("MCP: not used")
 
-        result = generate_final_answer(
-            messages,
-            route_info,
-            evidence,
-        )
+        try:
+            result = generate_final_answer(
+                messages,
+                route_info,
+                evidence,
+            )
+        except Exception as error:
+            print("Grounded generation failed, using fallback:", repr(error))
 
-        content = (
-            result["choices"][0]["message"]["content"]
-        )
+            result = call_lunit(
+                [
+                    {
+                        "role": "system",
+                        "content": FINAL_SYSTEM_PROMPT,
+                    },
+                    *messages,
+                ],
+                temperature=0.2,
+            )
+
+        content = result["choices"][0]["message"]["content"]
 
         return {
             "id": result.get(
